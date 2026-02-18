@@ -31,4 +31,10 @@ public class Operations {
             "UNIQUE (company_id, username)," +
             "FOREIGN KEY (company_id) REFERENCES company(id) ON DELETE CASCADE" +
             ");";
+    private String settingsSQL = "CREATE TABLE IF NOT EXISTS settings (" +
+            "id INT AUTO_INCREMENT PRIMARY KEY," +
+            "company_id INT NOT NULL UNIQUE," +
+            "tax_rate DECIMAL (5, 2) DEFAULT 13.00," +
+            "FOREIGN KEY (company_id) REFERENCES company(id) ON DELETE CASCADE" +
+            ");";
 }
