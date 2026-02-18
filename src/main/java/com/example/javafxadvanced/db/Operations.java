@@ -37,4 +37,20 @@ public class Operations {
             "tax_rate DECIMAL (5, 2) DEFAULT 13.00," +
             "FOREIGN KEY (company_id) REFERENCES company(id) ON DELETE CASCADE" +
             ");";
+    private String salesSQL = "CREATE TABLE IF NOT EXISTS sale (" +
+            "id INT AUTO_INCREMENT PRIMARY KEY," +
+            "company_id INT NOT NULL," +
+            "employee_id INT NOT NULL," +
+            "gross_revenue DECIMAL(10, 2) NOT NULL," +
+            "cog_sold DECIMAL(10, 2) DEFAULT 0.00," +
+            "operating_cost DECIMAL (10, 2) DEFAULT 0.00," +
+            "tax_amount DECIMAL (10, 2) DEFAULT 0.00," +
+            "payment_method VARCHAR(50)," +
+            "invoice VARCHAR(100)," +
+            "sale_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
+            "UNIQUE (company_id, invoice_number)," +
+            "FOREIGN KEY (company_id) REFRENCES company(id) ON DELETE CASCADE," +
+            "FOREIGN KEY (employee_id) REFERENCES user(id)" +
+            ");";
+
 }
