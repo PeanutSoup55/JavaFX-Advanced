@@ -49,8 +49,20 @@ public class Operations {
             "invoice VARCHAR(100)," +
             "sale_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
             "UNIQUE (company_id, invoice_number)," +
-            "FOREIGN KEY (company_id) REFRENCES company(id) ON DELETE CASCADE," +
+            "FOREIGN KEY (company_id) REFERENCES company(id) ON DELETE CASCADE," +
             "FOREIGN KEY (employee_id) REFERENCES user(id)" +
             ");";
+    private String sale_itemSQL = "CREATE TABLE IF NOT EXISTS sale_items (" +
+            "id INT AUTO_INCREMENT PRIMARY KEY," +
+            "sale_id INT NOT NULL," +
+            "product_id INT NOT NULL," +
+            "quantity INT NOT NULL," +
+            "unit_price DECIMAL(10, 2) NOT NULL," +
+            "total_price DECIMAL (10, 2) NOT NULL," +
+            "FOREIGN KEY (sale_id) REFERENCES sale(id) ON DELETE CASCADE," +
+            "FOREIGN KEY (product_id) REFERENCES products(id)" +
+            ");";
+
+
 
 }
