@@ -1,14 +1,9 @@
 package com.example.javafxadvanced.GUI;
 
 import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
-public class Home extends GridPane {
-    public Home(){
-        Label label = new Label("Home Page");
-        this.add(label, 0, 0);
-    }
+public class SalesAnalytics extends GridPane {
 
     @Override
     public Node getStyleableNode() {
