@@ -22,7 +22,7 @@ public class HelloApplication extends Application {
         borderPane.setLeft(sideMenu);
         borderPane.setCenter(home);
 
-        Scene scene = new Scene(borderPane, 1200, 900);
+        Scene scene = new Scene(borderPane, 1400, 1000);
         stage.setScene(scene);
         stage.show();
     }
