@@ -9,7 +9,7 @@ public class Operations {
     private static final String USER = Credentials.getDbUser();
     private static final String PASS = Credentials.getDbPass();
 
-    private static String productSQL = "CREATE TABLE IF NOT EXISTS products (" +
+    private static final String productSQL = "CREATE TABLE IF NOT EXISTS products (" +
             "id INT AUTO_INCREMENT PRIMARY KEY," +
             "company_id INT NOT NULL," +
             "name VARCHAR(255) NOT NULL," +
@@ -20,12 +20,12 @@ public class Operations {
             "is_empty BOOLEAN DEFAULT FALSE," +
             "FOREIGN KEY (company_id) REFERENCES company(id) ON DELETE CASCADE" +
             ");";
-    private static String companySQL = "CREATE TABLE IF NOT EXISTS company (" +
+    private static final String companySQL = "CREATE TABLE IF NOT EXISTS company (" +
             "id INT AUTO_INCREMENT PRIMARY KEY," +
             "name VARCHAR(255) NOT NULL UNIQUE," +
             "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP" +
             ");";
-    private static String userSQL = "CREATE TABLE IF NOT EXISTS user (" +
+    private static final String userSQL = "CREATE TABLE IF NOT EXISTS user (" +
             "id INT AUTO_INCREMENT PRIMARY KEY," +
             "company_id INT NOT NULL," +
             "username VARCHAR(255) NOT NULL," +
@@ -35,13 +35,13 @@ public class Operations {
             "UNIQUE (company_id, username)," +
             "FOREIGN KEY (company_id) REFERENCES company(id) ON DELETE CASCADE" +
             ");";
-    private static String settingsSQL = "CREATE TABLE IF NOT EXISTS settings (" +
+    private static final String settingsSQL = "CREATE TABLE IF NOT EXISTS settings (" +
             "id INT AUTO_INCREMENT PRIMARY KEY," +
             "company_id INT NOT NULL UNIQUE," +
             "tax_rate DECIMAL (5, 2) DEFAULT 13.00," +
             "FOREIGN KEY (company_id) REFERENCES company(id) ON DELETE CASCADE" +
             ");";
-    private static String salesSQL = "CREATE TABLE IF NOT EXISTS sale (" +
+    private static final String salesSQL = "CREATE TABLE IF NOT EXISTS sale (" +
             "id INT AUTO_INCREMENT PRIMARY KEY," +
             "company_id INT NOT NULL," +
             "employee_id INT NOT NULL," +
@@ -56,7 +56,7 @@ public class Operations {
             "FOREIGN KEY (company_id) REFERENCES company(id) ON DELETE CASCADE," +
             "FOREIGN KEY (employee_id) REFERENCES user(id)" +
             ");";
-    private static String sale_itemSQL = "CREATE TABLE IF NOT EXISTS sale_items (" +
+    private static final String sale_itemSQL = "CREATE TABLE IF NOT EXISTS sale_items (" +
             "id INT AUTO_INCREMENT PRIMARY KEY," +
             "sale_id INT NOT NULL," +
             "product_id INT NOT NULL," +
