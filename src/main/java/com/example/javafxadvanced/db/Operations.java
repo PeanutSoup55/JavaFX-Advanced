@@ -52,7 +52,7 @@ public class Operations {
             "payment_method VARCHAR(50)," +
             "invoice VARCHAR(100)," +
             "sale_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
-            "UNIQUE (company_id, invoice_number)," +
+            "UNIQUE (company_id, invoice)," +
             "FOREIGN KEY (company_id) REFERENCES company(id) ON DELETE CASCADE," +
             "FOREIGN KEY (employee_id) REFERENCES user(id)" +
             ");";
@@ -69,8 +69,8 @@ public class Operations {
 
     public static void initialize(){
         try(Connection connection = DriverManager.getConnection(URL, USER, PASS); Statement statement = connection.createStatement()){
-            statement.executeUpdate(productSQL);
             statement.executeUpdate(companySQL);
+            statement.executeUpdate(productSQL);
             statement.executeUpdate(userSQL);
             statement.executeUpdate(settingsSQL);
             statement.executeUpdate(salesSQL);
