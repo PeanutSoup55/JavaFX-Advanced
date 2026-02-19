@@ -8,6 +8,7 @@ module com.example.javafxadvanced {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires java.sql;
 
     opens com.example.javafxadvanced to javafx.fxml;
     exports com.example.javafxadvanced;
