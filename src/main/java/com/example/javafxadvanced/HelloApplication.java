@@ -6,6 +6,7 @@ import com.example.javafxadvanced.db.Operations;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.SplitPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -14,15 +15,15 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage){
-        BorderPane borderPane = new BorderPane();
         stage.setTitle("IMS");
         Operations.initialize();
-        Home home = new Home();
-        SideMenu sideMenu = new SideMenu(borderPane);
-        borderPane.setLeft(sideMenu);
-        borderPane.setCenter(home);
 
-        Scene scene = new Scene(borderPane, 1400, 1000);
+        SplitPane splitPane = new SplitPane();
+        SideMenu sideMenu = new SideMenu(splitPane);
+        splitPane.getItems().addAll(sideMenu, new Home());
+        splitPane.setDividerPositions(0.2);
+
+        Scene scene = new Scene(splitPane, 1400, 1000);
         stage.setScene(scene);
         stage.show();
     }
